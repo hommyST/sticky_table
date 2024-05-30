@@ -1,0 +1,10 @@
+@font-face {
+  font-family: 'Montserrat';
+  font-weight: 100 900;
+  src: url('../fonts/Montserrat-Variable.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'Source Code';
+  font-weight: 200 900;
+  src: url('../fonts/SourceCodePro-Variable.ttf') format('truetype');
+}

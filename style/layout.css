@@ -1,0 +1,6 @@
+:where(main) {
+  max-width: 1000px;
+  margin: 1rem auto;
+  padding: 1rem 0.8rem;
+  box-shadow: 0 0 10px hsl(0 0% 70% / 0.3);
+}

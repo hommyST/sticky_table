@@ -1,0 +1,102 @@
+@import url('./reset.css');
+@import url('./fonts.css');
+@import url('./layout.css');
+
+body {
+  font-family: 'Montserrat';
+  background-color: hsl(0 0% 10%);
+  color: hsl(0 0% 95%);
+}
+
+table {
+  --border: 1px solid yellow;
+  
+  width: 100%;
+  border-collapse: collapse;
+  text-align: start;
+}
+
+th {
+  text-align: start;
+}
+
+th, td {
+  padding: 0.5rem;
+  width: max-content;
+  text-wrap: nowrap;
+  white-space-collapse: preserve;
+}
+
+tr:nth-child(odd) {
+  background-color: hsl(0 0% 15%);
+}
+
+th {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  background-color: hsl(0 0% 8%);
+  /* backdrop-filter: blur(2px); */
+  box-shadow: inset 0 -1px  0 hsl(0 0% 90% / 0.8);
+}
+th:first-child {
+  position: sticky;
+  left: 0;
+  z-index: 2;
+  background-color: hsl(0 0% 8%);
+  box-shadow: inset -1px -1px 0 hsl(0 0% 90% / 0.8);
+  /* border-right: var(--border); */
+}
+td:first-child {
+  position: sticky;
+  left: 0;
+  z-index: 1;
+  background-color: hsl(0 0% 10%);
+  box-shadow: inset -1px 0 0 hsl(0 0% 90% / 0.8);
+  /* border-right: var(--border); */
+}
+
+tr:nth-child(odd) td:nth-child(1){
+  background-color: hsl(0 0% 15%);
+}
+
+@media (width < 500px) {
+  main {
+    box-shadow: none;
+    padding: 0 0.3rem;
+    margin: 0;
+  }
+  .container {
+    height: 100svh !important;
+  }
+  tr:first-child {
+    display: none;
+  }
+
+  td {
+    display: grid;
+    gap: 0.5rem;
+    grid-template-columns: 15ch auto;
+    box-shadow: none !important;
+    position: initial !important;
+    text-wrap: wrap !important;
+    width: auto !important;
+    padding: 0.2rem;
+    
+    &::before {
+      content: attr(data-cell) ": ";
+      font-weight: 650;
+    }
+  }
+}
+
+.container {
+  width: 100%;
+  height: 80vh;
+  /* resize: both; */
+  overflow: auto;
+}
+
+main {
+
+}
