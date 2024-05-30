@@ -36,33 +36,41 @@ function fillData() {
 function fillTable() {
   data.forEach(row => {
     const tr = document.createElement('tr')
-
-    const nameTd = document.createElement('td')
-    const surnameTd = document.createElement('td')
-    const ageTd = document.createElement('td')
-    const weightTd = document.createElement('td')
-    const heightTd = document.createElement('td')
-    const hobieTd = document.createElement('td')
-    const fullnameTd = document.createElement('td')
-
-    nameTd.dataset.cell = 'name'
-    surnameTd.dataset.cell = 'surname'
-    ageTd.dataset.cell = 'age'
-    weightTd.dataset.cell = 'weight'
-    heightTd.dataset.cell = 'height'
-    hobieTd.dataset.cell = 'hobie'
-    fullnameTd.dataset.cell = 'fullname'
-
-    nameTd.textContent = row.name
-    surnameTd.textContent = row.surname
-    ageTd.textContent = row.age
-    weightTd.textContent = row.weight
-    heightTd.textContent = row.height
-    hobieTd.textContent = row.hobies
-    fullnameTd.textContent = row.fullname
-
-    tr.append(nameTd, surnameTd, ageTd, weightTd, heightTd, hobieTd, fullnameTd)
+    for (const key in row) {
+      const td = document.createElement('td')
+      td.dataset.cell = key
+      td.textContent = row[key]
+      tr.append(td)
+    }
     table.append(tr)
+    // const tr = document.createElement('tr')
+
+    // const nameTd = document.createElement('td')
+    // const surnameTd = document.createElement('td')
+    // const ageTd = document.createElement('td')
+    // const weightTd = document.createElement('td')
+    // const heightTd = document.createElement('td')
+    // const hobieTd = document.createElement('td')
+    // const fullnameTd = document.createElement('td')
+
+    // nameTd.dataset.cell = 'name'
+    // surnameTd.dataset.cell = 'surname'
+    // ageTd.dataset.cell = 'age'
+    // weightTd.dataset.cell = 'weight'
+    // heightTd.dataset.cell = 'height'
+    // hobieTd.dataset.cell = 'hobie'
+    // fullnameTd.dataset.cell = 'fullname'
+
+    // nameTd.textContent = row.name
+    // surnameTd.textContent = row.surname
+    // ageTd.textContent = row.age
+    // weightTd.textContent = row.weight
+    // heightTd.textContent = row.height
+    // hobieTd.textContent = row.hobies
+    // fullnameTd.textContent = row.fullname
+
+    // tr.append(nameTd, surnameTd, ageTd, weightTd, heightTd, hobieTd, fullnameTd)
+    // table.append(tr)
   })
 }
 
