@@ -1,4 +1,4 @@
-const table = document.querySelector('table tbody')
+const table = document.querySelector('table')
 
 const data = []
 
@@ -23,7 +23,6 @@ function fillData() {
     for (let i = 1; i <= totalHobies; i++) {
       let pickedIndex = Math.floor(Math.random() * copyHobies.length)
       hobie += copyHobies.splice(pickedIndex, 1)[0]
-      console.log(hobie);
       if (i !== totalHobies) hobie += ', ' 
     }
     row.hobies = hobie
@@ -34,43 +33,77 @@ function fillData() {
 }
 
 function fillTable() {
+  const thead = document.createElement('thead')
+  const tr = document.createElement('tr')
+
+  const nameTh = document.createElement('th')
+  const surnameTh = document.createElement('th')
+  const ageTh = document.createElement('th')
+  const weightTh = document.createElement('th')
+  const heightTh = document.createElement('th')
+  const hobieTh = document.createElement('th')
+  const fullnameTh = document.createElement('th')
+
+  nameTh.textContent = 'name'
+  surnameTh.textContent = 'surname'
+  ageTh.textContent = 'age'
+  weightTh.textContent = 'weight'
+  heightTh.textContent = 'height'
+  hobieTh.textContent = 'hobie'
+  fullnameTh.textContent = 'fullname'
+
+  nameTh.classList.add('head-cell', 'name')
+  surnameTh.classList.add('head-cell')
+  ageTh.classList.add('head-cell')
+  weightTh.classList.add('head-cell')
+  heightTh.classList.add('head-cell')
+  hobieTh.classList.add('head-cell')
+  fullnameTh.classList.add('head-cell')
+
+  tr.append(nameTh, surnameTh, ageTh, weightTh, heightTh, hobieTh, fullnameTh)
+  thead.append(tr)
+
+  const tbody = document.createElement('tbody')
+  table.append(thead, tbody)
+
+
   data.forEach(row => {
     const tr = document.createElement('tr')
-    for (const key in row) {
-      const td = document.createElement('td')
-      td.dataset.cell = key
-      td.textContent = row[key]
-      tr.append(td)
-    }
-    table.append(tr)
-    // const tr = document.createElement('tr')
 
-    // const nameTd = document.createElement('td')
-    // const surnameTd = document.createElement('td')
-    // const ageTd = document.createElement('td')
-    // const weightTd = document.createElement('td')
-    // const heightTd = document.createElement('td')
-    // const hobieTd = document.createElement('td')
-    // const fullnameTd = document.createElement('td')
+    const nameTd = document.createElement('td')
+    const surnameTd = document.createElement('td')
+    const ageTd = document.createElement('td')
+    const weightTd = document.createElement('td')
+    const heightTd = document.createElement('td')
+    const hobieTd = document.createElement('td')
+    const fullnameTd = document.createElement('td')
 
-    // nameTd.dataset.cell = 'name'
-    // surnameTd.dataset.cell = 'surname'
-    // ageTd.dataset.cell = 'age'
-    // weightTd.dataset.cell = 'weight'
-    // heightTd.dataset.cell = 'height'
-    // hobieTd.dataset.cell = 'hobie'
-    // fullnameTd.dataset.cell = 'fullname'
+    nameTd.classList.add('cell', 'name')
+    surnameTd.classList.add('cell')
+    ageTd.classList.add('cell')
+    weightTd.classList.add('cell')
+    heightTd.classList.add('cell')
+    hobieTd.classList.add('cell')
+    fullnameTd.classList.add('cell')
 
-    // nameTd.textContent = row.name
-    // surnameTd.textContent = row.surname
-    // ageTd.textContent = row.age
-    // weightTd.textContent = row.weight
-    // heightTd.textContent = row.height
-    // hobieTd.textContent = row.hobies
-    // fullnameTd.textContent = row.fullname
+    nameTd.dataset.cell = 'name'
+    surnameTd.dataset.cell = 'surname'
+    ageTd.dataset.cell = 'age'
+    weightTd.dataset.cell = 'weight'
+    heightTd.dataset.cell = 'height'
+    hobieTd.dataset.cell = 'hobie'
+    fullnameTd.dataset.cell = 'fullname'
 
-    // tr.append(nameTd, surnameTd, ageTd, weightTd, heightTd, hobieTd, fullnameTd)
-    // table.append(tr)
+    nameTd.textContent = row.name
+    surnameTd.textContent = row.surname
+    ageTd.textContent = row.age
+    weightTd.textContent = row.weight
+    heightTd.textContent = row.height
+    hobieTd.textContent = row.hobies
+    fullnameTd.textContent = row.fullname
+
+    tr.append(nameTd, surnameTd, ageTd, weightTd, heightTd, hobieTd, fullnameTd)
+    tbody.append(tr)
   })
 }
 

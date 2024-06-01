@@ -5,23 +5,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="./style/index.css">
   <script src="filltable.js" defer></script>
+  <script src="modal_handler.js" defer></script>
   <title>template</title>
 </head>
 <body>
   <main>
     <div class="container">
       <table>
-        <tbody>
-          <tr>
-            <th>Name</th>
-            <th>Surname</th>
-            <th>Age</th>
-            <th>Weight</th>
-            <th>Height</th>
-            <th>Hobbie</th>
-            <th>Fullname</th>
-          </tr>
-        </tbody>
       </table>
     </div>
   </main>
@@ -30,5 +20,21 @@
     <div class="body"></div>
     <div class="mini"></div>
   </section>
+
+  <dialog class="more-info-dialog">
+    <div class="content">
+      <button class="close-btn">X</button>
+      <h2>More info</h2>
+      <p><strong>name: </strong><span data-title="name">Linda</span></p>
+      <p><strong>surname: </strong><span data-title="surname">Stiedemann</span></p>
+      <p><strong>age: </strong><span data-title="age">65</span></p>
+      <p><strong>weight: </strong><span data-title="weight">83</span></p>
+      <p><strong>height: </strong><span data-title="height">178.65</span></p>
+      <p><strong>hobie: </strong><span data-title="hobie">read, astrophisics, movies, beuty, cook, sport</span></p>
+      <p><strong>fullname: </strong><span data-title="fullname">Linda Stiedemann</span></p>
+    </div>
+  </dialog>
 </body>
 </html>
+
+
