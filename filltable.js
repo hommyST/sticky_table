@@ -33,38 +33,10 @@ function fillData() {
 }
 
 function fillTable() {
-  const thead = document.createElement('thead')
-  const tr = document.createElement('tr')
-
-  const nameTh = document.createElement('th')
-  const surnameTh = document.createElement('th')
-  const ageTh = document.createElement('th')
-  const weightTh = document.createElement('th')
-  const heightTh = document.createElement('th')
-  const hobieTh = document.createElement('th')
-  const fullnameTh = document.createElement('th')
-
-  nameTh.textContent = 'name'
-  surnameTh.textContent = 'surname'
-  ageTh.textContent = 'age'
-  weightTh.textContent = 'weight'
-  heightTh.textContent = 'height'
-  hobieTh.textContent = 'hobie'
-  fullnameTh.textContent = 'fullname'
-
-  nameTh.classList.add('head-cell', 'name')
-  surnameTh.classList.add('head-cell')
-  ageTh.classList.add('head-cell')
-  weightTh.classList.add('head-cell')
-  heightTh.classList.add('head-cell')
-  hobieTh.classList.add('head-cell')
-  fullnameTh.classList.add('head-cell')
-
-  tr.append(nameTh, surnameTh, ageTh, weightTh, heightTh, hobieTh, fullnameTh)
-  thead.append(tr)
+  fillHeadRow()
 
   const tbody = document.createElement('tbody')
-  table.append(thead, tbody)
+  table.append(tbody)
 
 
   data.forEach(row => {
@@ -107,6 +79,64 @@ function fillTable() {
   })
 }
 
+function fillHeadRow() {
+  const thead = document.createElement('thead')
+  const tr = document.createElement('tr')
+
+  const nameTh = document.createElement('th')
+  const nameWrap = document.createElement('div')
+  const surnameTh = document.createElement('th')
+  const surnameWrap = document.createElement('div')
+  const ageTh = document.createElement('th')
+  const ageWrap = document.createElement('div')
+  const weightTh = document.createElement('th')
+  const weightWrap = document.createElement('div')
+  const heightTh = document.createElement('th')
+  const heightWrap = document.createElement('div')
+  const hobieTh = document.createElement('th')
+  const hobieWrap = document.createElement('div')
+  const fullnameTh = document.createElement('th')
+  const fullnameWrap = document.createElement('div')
+
+  const sortImg = document.createElement('img')
+  sortImg.src = './icons/up_down_arrow_white20.svg'
+  
+  nameWrap.textContent = 'name'
+  surnameWrap.textContent = 'surname'
+  ageWrap.textContent = 'age'
+  weightWrap.textContent = 'weight'
+  heightWrap.textContent = 'height'
+  hobieWrap.textContent = 'hobie'
+  fullnameWrap.textContent = 'fullname'
+  
+  nameWrap.append(sortImg.cloneNode())
+  surnameWrap.append(sortImg.cloneNode())
+  ageWrap.append(sortImg.cloneNode())
+  weightWrap.append(sortImg.cloneNode())
+  heightWrap.append(sortImg.cloneNode())
+  hobieWrap.append(sortImg.cloneNode())
+  fullnameWrap.append(sortImg.cloneNode())
+
+  nameTh.classList.add('head-cell', 'name')
+  surnameTh.classList.add('head-cell')
+  ageTh.classList.add('head-cell')
+  weightTh.classList.add('head-cell')
+  heightTh.classList.add('head-cell')
+  hobieTh.classList.add('head-cell')
+  fullnameTh.classList.add('head-cell')
+
+  nameTh.append(nameWrap)
+  surnameTh.append(surnameWrap)
+  ageTh.append(ageWrap)
+  weightTh.append(weightWrap)
+  heightTh.append(heightWrap)
+  hobieTh.append(hobieWrap)
+  fullnameTh.append(fullnameWrap)
+
+  tr.append(nameTh, surnameTh, ageTh, weightTh, heightTh, hobieTh, fullnameTh)
+  thead.append(tr)
+  table.append(thead)
+}
 
 fillData()
 fillTable()
