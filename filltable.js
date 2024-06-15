@@ -34,15 +34,23 @@ function fillData() {
 
 async function loadData() {
   data = await fetch('./data.json').then(res => res.json())
+  return data
 }
 
-async function fillTable() {
+async function fillTable(data) {
   // fillHeadRow()
-  await loadData()
-  console.log(data);
 
-  const tbody = document.createElement('tbody')
-  table.append(tbody)
+  let tbody = null
+  
+  if (!data) {
+    data = await loadData()
+    tbody = document.createElement('tbody')
+    table.append(tbody)
+  } else {
+    tbody = document.querySelector('tbody')
+  }
+
+  tbody.innerHTML = ''
 
 
   data.forEach(row => {
