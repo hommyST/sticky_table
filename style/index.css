@@ -25,16 +25,23 @@ th, td {
   top: 0;
   background-color: hsl(0 0% 3%);
 
-  > div {
+  .head_wrap {
     display: flex;
     justify-content: space-between;
     gap: 1rem;
     align-items: center;
   }
 
-  img {
+  .sort {
+    background: none;
+    border: none;
+    padding: 0;
     width: 15px;
     cursor: pointer;
+
+    img {
+      width: 100%;
+    }
 
     &:hover {
       filter: opacity(0.5);
@@ -151,4 +158,22 @@ tbody tr:hover .cell {
   p {
     margin-bottom: 0.5rem;
   }
+}
+
+
+
+
+
+
+
+
+
+
+
+/* UTILS */
+.overflow_collapse {
+	max-width: 250px;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
 }

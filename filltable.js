@@ -1,6 +1,6 @@
 const table = document.querySelector('table')
 
-const data = []
+let data = []
 
 const names = ['Katelynn','Larry','Michale','Rosalind','Leatha','Ruthie','Karlee','Roselyn','Henri','Linda','Luna','Gerard','Humberto','Eli','Sim','Anahi','Vincenzo','Donny','Gerald','Jason',]
 const surnames = ['Lowe','Medhurst','Rau','Sporer','Mitchell','Stiedemann','Little','Stamm','Kassulke','Mueller','Oberbrunner','Hoppe','Kertzmann','Gulgowski','Toy','Bednar','Windler','Goldner','Hoppe','Kreiger',]
@@ -32,8 +32,14 @@ function fillData() {
   }
 }
 
-function fillTable() {
-  fillHeadRow()
+async function loadData() {
+  data = await fetch('./data.json').then(res => res.json())
+}
+
+async function fillTable() {
+  // fillHeadRow()
+  await loadData()
+  console.log(data);
 
   const tbody = document.createElement('tbody')
   table.append(tbody)
@@ -43,38 +49,32 @@ function fillTable() {
     const tr = document.createElement('tr')
 
     const nameTd = document.createElement('td')
-    const surnameTd = document.createElement('td')
-    const ageTd = document.createElement('td')
-    const weightTd = document.createElement('td')
-    const heightTd = document.createElement('td')
-    const hobieTd = document.createElement('td')
-    const fullnameTd = document.createElement('td')
+    const dateTd = document.createElement('td')
+    const devsTd = document.createElement('td')
+    const platformsTd = document.createElement('td')
+    const userScoreTd = document.createElement('td')
 
-    nameTd.classList.add('cell', 'name')
-    surnameTd.classList.add('cell')
-    ageTd.classList.add('cell')
-    weightTd.classList.add('cell')
-    heightTd.classList.add('cell')
-    hobieTd.classList.add('cell')
-    fullnameTd.classList.add('cell')
+    nameTd.classList.add('cell', 'name', 'overflow_collapse')
+    dateTd.classList.add('cell')
+    devsTd.classList.add('cell')
+    platformsTd.classList.add('cell')
+    userScoreTd.classList.add('cell')
 
     nameTd.dataset.cell = 'name'
-    surnameTd.dataset.cell = 'surname'
-    ageTd.dataset.cell = 'age'
-    weightTd.dataset.cell = 'weight'
-    heightTd.dataset.cell = 'height'
-    hobieTd.dataset.cell = 'hobie'
-    fullnameTd.dataset.cell = 'fullname'
+    dateTd.dataset.cell = 'date'
+    devsTd.dataset.cell = 'devs'
+    platformsTd.dataset.cell = 'platforms'
+    userScoreTd.dataset.cell = 'userScore'
 
     nameTd.textContent = row.name
-    surnameTd.textContent = row.surname
-    ageTd.textContent = row.age
-    weightTd.textContent = row.weight
-    heightTd.textContent = row.height
-    hobieTd.textContent = row.hobies
-    fullnameTd.textContent = row.fullname
+    dateTd.textContent = row.date
+    devsTd.textContent = row.devs.join(', ')
+    platformsTd.textContent = row.platforms.join(', ')
+    userScoreTd.textContent = row.user_score
 
-    tr.append(nameTd, surnameTd, ageTd, weightTd, heightTd, hobieTd, fullnameTd)
+    nameTd.title = row.name
+
+    tr.append(nameTd, dateTd, devsTd, platformsTd, userScoreTd)
     tbody.append(tr)
   })
 }
@@ -138,5 +138,5 @@ function fillHeadRow() {
   table.append(thead)
 }
 
-fillData()
+// fillData()
 fillTable()
